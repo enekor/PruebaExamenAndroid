@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.Recetas.nuevaReceta.NuevaReceta">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/linearLayout">
+        <Button
+                android:text="Nueva receta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nuevaReceta"
+        />
+        <Button
+                android:text="sacarFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/sacarFoto" android:layout_weight="1"/>
+    </LinearLayout>
+    <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/scroll"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/nuevoNombre" android:hint="Nombre" android:minHeight="48dp"/>
+            <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp" tools:srcCompat="@tools:sample/avatars"
+                    android:id="@+id/verImagen" tools:ignore="SpeakableTextPresentCheck"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/newDuracion" android:hint="Duracion(min)" android:minHeight="48dp"/>
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center" android:id="@+id/radioGroup">
+                <RadioButton
+                        android:text="Facil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/dif1"/>
+                <RadioButton
+                        android:text="Medio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/dif2"/>
+                <RadioButton
+                        android:text="Dificil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/dif3"/>
+            </RadioGroup>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:text="Categoria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_weight="1"/>
+                <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/categoriaSpinner"
+                        android:layout_weight="1"/>
+            </LinearLayout>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:gravity="start|top"
+                    android:ems="10"
+                    android:id="@+id/newIngredientes" android:hint="Ingredientes" android:minHeight="48dp"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:gravity="start|top"
+                    android:ems="10"
+                    android:id="@+id/newPreparacion" android:hint="Preparacion" android:minHeight="48dp"/>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import com.example.pruebaexamenandroid.database.BaseDeDatos;
 import com.example.pruebaexamenandroid.databinding.ActivityNuevaRecetaBinding;
 import com.example.pruebaexamenandroid.mapper.UriMapper;
+import com.example.pruebaexamenandroid.model.Categoria;
 import com.example.pruebaexamenandroid.model.Receta;
 import org.jetbrains.annotations.NotNull;
 
@@ -69,10 +70,10 @@ public class NuevaReceta extends AppCompatActivity {
     }
 
     private int getDificultad(){
-        if(binding.dif1.isSelected()){
+        if(binding.dif1.isChecked()){
             return 1;
         }
-        else if(binding.dif2.isSelected()){
+        else if(binding.dif2.isChecked()){
             return 2;
         }
         else{
@@ -102,11 +103,12 @@ public class NuevaReceta extends AppCompatActivity {
     private void guardarReceta(){
         Receta receta = new Receta();
         receta.setNombre(binding.nuevoNombre.getText().toString());
-        //receta.setCategoria((String)binding.categoriaSpinner.getSelectedItem());
+        receta.setCategoria(getCategoria((Categoria)binding.categoriaSpinner.getSelectedItem()));
         receta.setDificultad(getDificultad());
         receta.setElavoracion(binding.newPreparacion.getText().toString());
         receta.setIngredientes(binding.newIngredientes.getText().toString());
         receta.setFoto(UriMapper.getInstance().fromUriToString(imageUri));
+        receta.setTiempoDeCoccion(binding.newDuracion.getText().toString());
 
         BaseDeDatos.getInstance(this).recetaDao().insertReceta(receta);
     }
@@ -115,5 +117,9 @@ public class NuevaReceta extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         binding.verImagen.setImageURI(imageUri);
+    }
+
+    private String getCategoria(Categoria c){
+        return c.getNombre();
     }
 }
